@@ -9,16 +9,16 @@ from flask import Flask
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from importlib import import_module
-
+from flask_debugtoolbar import DebugToolbarExtension
 
 db = SQLAlchemy()
 login_manager = LoginManager()
-
+toolbar = DebugToolbarExtension()
 
 def register_extensions(app):
     db.init_app(app)
     login_manager.init_app(app)
-
+    toolbar.init_app(app)
 
 def register_blueprints(app):
     for module_name in ('authentication', 'home'):

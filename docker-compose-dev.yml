@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  appseed-app-dev:
+    container_name: appseed_app-dev
+    restart: always
+    env_file: .env
+    ports:
+      - "5003:5003"
+    build:
+      context: .
+      dockerfile: DockerfileDEV
+    networks:
+      - db_network
+      - web_network
+    volumes:
+      - .:/app
+networks:
+  db_network:
+    driver: bridge
+  web_network:
+    driver: bridge
+ 
